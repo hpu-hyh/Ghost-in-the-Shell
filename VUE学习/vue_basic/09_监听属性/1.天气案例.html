@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <!-- 引入vue -->
+     <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+       <h2>今天天气很{{info}}</h2>
+       <button @click="isHot=!isHot;">点我切换天气</button>
+    </div>
+</body>
+
+    <script>
+         Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+        new Vue({
+            el:'#root',
+            data:{
+                isHot:'ture',
+
+            },
+            methods: {
+                // change(){
+                //     this.isHot=!this.isHot;
+                // }
+            },
+            computed:{
+                info(){
+                    return this.isHot ? '热' : '冷'
+                }
+            },
+           
+        })
+    </script>
+
+</html>

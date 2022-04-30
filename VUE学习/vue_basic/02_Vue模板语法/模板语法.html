@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <!-- 引入vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- 
+    Vue模板语法有两大类：
+        1.插值语法：
+        功能：用于解析标签体内容
+        写法：{{？？？}}
+        2.指令语法：
+        功能：用于解析标签（包括标签属性，标签体内容，绑定事件.....）       
+ -->
+
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>你好，{{name}}</h3>
+        <hr />
+        <h1>指令语法</h1>
+        <a v-bind:href="school.url">点我去{{school.name}}学习Vue1</a>
+        <!-- v-bind可以简写成： -->
+        <a :href="school.url">点我去{{school.name}}学习Vue2</a>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'jack',
+            school: {
+                name: '尚硅谷',
+                url: 'https://www.bilibili.com/video/BV1Zy4y1K7SH?p=7&spm_id_from=pageDriver'
+            }
+        }
+    })
+</script>
+
+</html>

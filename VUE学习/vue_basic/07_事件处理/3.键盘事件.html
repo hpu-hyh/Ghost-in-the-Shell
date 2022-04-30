@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+.enter
+.tab(必须配合keydown使用 )
+.delete (捕获“删除”和“退格”键)
+.esc
+.space
+.up
+.down
+.left
+.right
+     -->
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>欢迎来到{{name}}学习</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+
+    new Vue({
+        el: '#root',
+        data: {
+            name: '尚硅谷'
+        },
+        methods: {
+            showInfo(e) {
+                // console.log(e.keyCode);
+                // if(e.keyCode!==13)return//在Vue中不用这么干
+                console.log(e.target.value)
+                console.log(e.key)
+            }
+        }
+    })
+</script>
+
+</html>

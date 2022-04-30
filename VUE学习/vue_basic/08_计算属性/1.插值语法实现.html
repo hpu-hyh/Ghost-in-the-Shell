@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+       <!-- 准备好一个容器 -->
+       <div id="root">
+        <div id="root">
+            姓：<input type="text" v-model="firstName"><br>     
+            名：<input type="text" v-model="lastName"><br>
+            姓名 <span>{{firstName.slice(0,3)}}-{{lastName}}</span>
+        </div>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+
+    new Vue({
+        el:'#root',
+        data:{
+            firstName:'张',
+            lastName:'三'
+        },
+        methods:{
+            showInfo1(event){
+                alert(event.target.innerText)
+                console.log(this);//Vue实例 
+            },
+            showInfo2(number,a){
+                console.log(number,a);
+                // alert('同学你好！！')
+            },
+        }
+    })
+</script>
+</html>
