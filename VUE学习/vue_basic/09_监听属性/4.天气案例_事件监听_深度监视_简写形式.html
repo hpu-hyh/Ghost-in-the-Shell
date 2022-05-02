@@ -8,6 +8,16 @@
     <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 
+<!-- 
+    computed和watch的区别：
+    1.computed可以完成的任务，watch都可以完成
+    2.watch能完成的任务，computed不一定能够完成
+    两个重要的小原则：
+    1.所有被Vue做管理的函数，最好写成普通函数，这样它的this指向才是vm或者实例组件对象
+    2.所有不被Vue管理的函数（定时器的回调函数，ajax的回调函数等），最好写成箭头函数，
+    这样this指向的才是vm或者实例组件对象
+ -->
+
 <body>
     <!-- 准备好一个容器 -->
     <div id="root">
