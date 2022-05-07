@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+    <style>
+        /* 基本样式 */
+        .basic{
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        /* 心情样式 */
+        .happy{
+            background-color: red;
+        }
+        .sad{
+            background-color: grey;
+        }
+        .normal{
+            background-color: #ccc;
+        }
+
+        /* 修饰样式 */
+        .hyh1{
+            font-size: 20px;
+        }
+        .hyh2{
+            color: blue;
+        }
+        .hyh3{
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+        new Vue({
+            el: "#root",
+            data: {
+
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+
+{
+	"vue": {
+		"prefix": "v1",//关键字
+		"body": [//对应代码片段
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+			"",
+			"<head>",
+			"\t<meta charset=\"UTF-8\">",
+			"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+			"\t<title>vue</title>",
+			"</head>",
+			"",
+			"<body>",
+			"\t<div id=\"root\">",
+			"",
+			"\t</div>",
+			"\t<script src=\"../js/vue.js\"></script>",
+			"\t<script>",
+			"\tVue.config.productionTip = false;//阻止vue在启动时产生生产提示",
+			"\t\tnew Vue({",
+			"\t\t\tel: \"#root\",",
+			"\t\t\tdata: {",
+			"",
+			"\t\t\t},",
+			"\t\t\tmethods: {",
+			"",
+			"\t\t\t}",
+			"\t\t});",
+			"\t</script>",
+			"</body>",
+			"",
+			"</html>"
+		],
+		"description": "vue snippet"
+	}
+}
