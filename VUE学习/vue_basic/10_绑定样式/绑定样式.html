@@ -39,7 +39,15 @@
 
 <body>
     <div id="root">
+        <!-- 绑定class样式——字符串写法，适用于：样式的类名不确定，需要动态指定 -->
+        <div class="basic" :class="a"  @click="changeMood">{{name}}</div><br>
 
+        <!-- 绑定class样式——数组写法，适用于：样式的类名个数不确定，名字也不确定 -->
+        <div class="basic" :class="arr">{{name}}</div><br>
+
+        <!-- 绑定class样式——对象写法，适用于：样式的类名个数确定，名字确定，但是要动态决定用不用 -->
+
+        <div class="basic" :class="obj">{{name}}</div>
     </div>
     <script src="../js/vue.js"></script>
     <script>
@@ -47,10 +55,21 @@
         new Vue({
             el: "#root",
             data: {
-
+                name:'尚硅谷',
+                a:'normal',
+                arr:['hyh1','hyh2','hyh3'],
+                obj:{
+                    hyh1:false,
+                    hyh2:false,
+                }
             },
             methods: {
-
+                changeMood(){
+                    // document.getElementById('demo').className='basic happy';
+                    // this.a='happy'
+                    const arr=['happy','sad','normal'];
+                        this.a=arr[Math.floor(Math.random()*3)];
+                }
             }
         });
     </script>
