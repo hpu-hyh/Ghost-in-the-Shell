@@ -46,8 +46,11 @@
         <div class="basic" :class="arr">{{name}}</div><br>
 
         <!-- 绑定class样式——对象写法，适用于：样式的类名个数确定，名字确定，但是要动态决定用不用 -->
-
         <div class="basic" :class="obj">{{name}}</div>
+
+        <!-- 绑定内联样式 -->
+        <div class="basic" :style="styleObj1">{{name}}</div>
+        <div class="basic" :style="[styleObj1,styleObj2]">{{name}}</div>
     </div>
     <script src="../js/vue.js"></script>
     <script>
@@ -61,6 +64,14 @@
                 obj:{
                     hyh1:false,
                     hyh2:false,
+                },
+                // fsize:40,
+                styleObj1:{
+                    fontSize:'30px',
+                    color:'red',
+                },
+                styleObj2:{
+                    backgroundColor:'black'
                 }
             },
             methods: {

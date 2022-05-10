@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    span {
+        display: block;
+        height: 200px;
+        width: 200px;
+        margin-top: 30px;
+    }
+    .hyh1{
+        background-color: #333;
+    }
+    .hyh2{
+        background-color: blue;
+    }
+    .hyh3{
+        background-color: green;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+</head>
+
+<!-- 
+    条件渲染：
+        1.v-if
+            写法：
+                1.v-if='a表达式'
+                2.v-else-if='表达式'
+                3.v-else='表达式'
+            适用于：切换频率较低的场景
+            特点：不展示DOM元素直接被移除
+            注意：v-if v-else-if v-else一起使用时，结构不能被打断
+        2.v-show
+            写法：v-show='表达式'
+            适用于：切换频率较高的场景
+            特点：不展示的DOM元素未被移除，仅仅只将样式隐藏
+        3.备注：使用v-if的时候，元素可能无法获取到，但是用v-show一定可以。
+ -->
+
+<body>
+    <div id="root">
+        <h2>当前的n值是{{n}}</h2>
+        <button @click="func">点我显示下一个盒子</button>
+        <!-- 使用v-show做条件渲染 -->
+        <!-- <h2 v-show="a">欢迎来到{{name}}</h2> -->
+        <!-- 使用v-if做条件渲染 -->
+        <!-- <h2 v-if="a">欢迎来到{{name}}</h2> -->
+        <span class="hyh1" v-show="n%3===1" >1</span>
+        <span class="hyh2" v-show="n%3===2">2</span>
+        <span class="hyh3" v-if="n%3===0">3</span>
+
+        <!-- v-if和template的配合使用 -->
+        <template v-if="n===1">
+            <div>
+                <h2>你好</h2>
+                <h2>尚硅谷</h2>
+                <h2>上海</h2>
+            </div>
+        </template>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                name: '尚硅谷',
+                a: true,
+                n: 0
+            },
+            methods: {
+                func() {
+                    this.n++
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
