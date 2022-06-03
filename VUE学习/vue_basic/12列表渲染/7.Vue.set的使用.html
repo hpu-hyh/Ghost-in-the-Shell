@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+</head>
+<style>
+    *{
+        color: blue;
+    }
+</style>
+<body>
+    <div id="root">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2><hr>
+        <button @click="addSex">点我给学生追加性别</button>
+        <h2>学生名字：{{student.name}}</h2>
+        <h2 v-if="student.sex">学生性别：{{student.sex}}</h2><!--判断是否含有sex，若果没有就不显示-->
+        <h2>学生年龄：真实：{{student.age.rAge}}</h2>
+        <h2>学生年龄：虚假：{{student.age.sAge}}</h2>
+        <h2>朋友们</h2>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                名字：{{f.name}}
+                年龄：{{f.age}}
+            </li>
+        </ul>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+       const vm = new Vue({
+            el: "#root",
+            data: {
+                name:'尚硅谷',
+                address:'beijing',
+                student:{
+                    name:'tom',
+                    age:{
+                        rAge:40,
+                        sAge:29,
+                    },
+                    friends:[
+                        {name:'jerry',age:35},
+                        {name:'tony',age:36}
+                    ]
+
+                }
+            },
+            methods: {
+                addSex(){
+                    Vue.set(this.student,'sex','男')
+                }
+
+                
+            }
+        });
+    </script>
+</body>
+
+</html>
