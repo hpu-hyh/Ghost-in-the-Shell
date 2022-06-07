@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.Vue会监测data中所有层次的数据
+
+        2.如何检测对象忠的数据？
+            通过setter实现监视，且要在new Vue时就传入要检测的数据
+                （1）.对象中后追加的数据，Vue默认不做响应式处理
+                （2）.如需给后添加的属性做响应式，请使用以下API
+                        Vue.set(target,Name/index,value)或者
+                        Vue.$set(target,Name/index,value)
+
+        3.如何检测数组中的数据？
+            通过调用包裹数组更新的的方法实现，本质就是做了两件事：
+                1.调用原生对应的方法进行更新
+                2.重新解析模板，进而更新页面
+
+        4.在Vue中修改数组中的某个元素一定要按照下列方法
+            1.使用数组原生的API
+            2.Vue.set
+        
+        特别注意：set和$set不能给vm或者vm的根数据对象添加属性
+     -->
+</body>
+</html>

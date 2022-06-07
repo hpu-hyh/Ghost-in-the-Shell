@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+
+<body>
+    <div id="root">
+    <school></school>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+       const school = Vue.extend({
+           template:'<div><h2>{{name}}</h2></div>',
+           data(){
+               return{
+                name:'tom'
+               }
+           }
+       })
+       new Vue({
+           el:'#root',
+           data:{
+
+           },
+           components:{
+               school:school
+           }
+       })
+    </script>
+</body>
+
+</html>

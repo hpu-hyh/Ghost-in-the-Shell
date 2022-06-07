@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2>当前的n值是：{{n}}</h2>
+        <button @click="add">点我+1</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+        new Vue({
+            el: "#root",
+            data: {
+                n:1,
+            },
+            methods: {
+                add(){
+                    this.n++
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

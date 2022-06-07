@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+    Vue.config.productionTip = false;//阻止vue在启动时产生生产提示
+        //创建school组件
+        const school = Vue.extend({
+            //组件不要写el配置项，最终由vm决定为谁服务
+        })
+
+
+        // new Vue({
+        //     el: "#root",
+        //     data: {
+
+        //     },
+        //     methods: {
+
+        //     }
+        // });
+    </script>
+</body>
+
+</html>
