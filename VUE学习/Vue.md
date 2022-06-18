@@ -152,3 +152,101 @@ Vue.use()
    2. LoaclStorage储存的内容，需要手动清除才会消失
    3. `xxxxxStorage.getItem('person');`如果xxx对应的value获取不到，那么getItem的返回值时null
    4. `JSON.parse(null)`的结果是null
+
+## 组件的自定义事件
+
+1. 一种组件间的通讯方式，适用于：子组件====>父组件
+
+2. 使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件（事件的回调在A中）。
+
+3. 绑定自定义事件：
+
+   1. 第一种方式，在父组件中`<Demo @atguigu = 'test'/>`或者`<Demo v-on:atguigu='test'>`
+
+   2. 第二种方式，在父组件中：
+
+      ```js
+      <Demo ref = "demo" / >
+          .....
+      mounted(){
+          this.$ref.xxx.$on('atguigu',this.test)
+      }
+      ```
+
+   3. 若想让自定义事件只触发一次，可以使用`once`修饰符，或者`$once`方法。
+
+4. 触发自定义事件：`this.$emit('atguigu',数据)`
+
+5. 解绑自定义事件：`this.$off('atguigu')`
+
+6. 组件上也可以绑定原生DOM事件，需要使用`native'`
+
+7. 注意：通过`this.$refs.xxx.$on('atguigu',回调)`绑定自定义事件，回调要么配置在methods中，要么用箭头函数，否则this指向会出问题！
+
+## 全局事件总线（GlobalEventBus）
+
+1. 一种组件间通信的方式，适用于`任何组件间通信`
+
+2. 安装全局事件总线：
+
+   ```js
+   new Vue({
+       .....
+       beforeCreate(){
+       	Vue.prototype.$bus = this //安装全局事件总线，$bus就是当前的vm
+   	},
+       .....
+   })
+   ```
+
+3. 使用事件总线：
+
+   1. 接收数据：A组件想接收数据，则在A组件中给$bus绑定自定义事件，时间的`回调留在A组件本身`
+
+      ```js
+      methods(){
+          demo(data){.....}
+      },
+          ......
+      mounted(){
+          this.$bus.$on('xxx',this.demo)
+      }
+      ```
+
+   2. 提供数据：`this.$bus.$emit('xxx',数据)`
+
+4. 最好在beforeDestory钩子中，用$off解绑`当前用到的`事件
+
+
+
+## 消息订阅与发布（pubsub）
+
+1. 一种组件间通讯的方式，适用于任意组件通信。
+
+2. 使用步骤：
+
+   1. 安装pubsub：`npm i pubsub-js`
+
+   2. 引入：`import pubsub form 'pubsub-js'`
+
+   3. 接收数据：A组件想接收数据，则在A组件中订阅消息，订阅的`回调留在A组件本身`
+
+      ```js
+      methods(){
+          demo(data){.....}
+      }
+      .....
+      mounted(){
+          this.pid = pubsub.subscribe('xxx',this.demo)//订阅消息
+      }
+      ```
+
+   4. 提供数据：`pubsub.publish('xxx',数据)`
+
+   5. 最好在beforeDestory钩子中，用`PubSub.unsubscribe(pid)`取消订阅。
+
+## nextTick
+
+1. 语法：`this.$nextTick(回调函数)`
+2. 作用：在下一次DOM更新后执行其指定的回调。
+3. 什么时候用：当改变数据后，要基于更新后新DOM进行某些操作时，要在nextTick所指定的糊掉函数中执行
